@@ -1,10 +1,14 @@
 <h1> String Inporlation</h1>
-<p> Me llamo {{nombre}}</p>
+<p> Me llamo {{nombre}} {{apellido}}</p>
 
 <h1> Property Binding</h1>
-<input type="text" [value]="nombre" [disabled]="escribir">
+<input type="text" [value]="nombre" [disabled]="escribir" #input (change)="cambiarNombreCompleto(input.value)">
 
 <h1>Event Binding</h1>
 <button type="button"(click)="habilitarEdicion()">Habilitar edicion</button>
 
 <input type="checkbox"(click)="habilitarEdicion()" [checked]="escribir"/>
+
+<h1>Two Way Data Binding</h1>
+<label for="input1">Nombre:</label><span>{{nombre}}</span>
+<input id="input" type="text"[(ngModel)]="nombre">

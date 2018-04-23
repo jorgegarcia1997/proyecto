@@ -1,0 +1,51 @@
+<h1>pipes</h1>
+<p>{{ texto }}</p>
+<p>{{ texto | uppercase}}</p>
+<p>{{ texto | lowercase}}</p>
+<p>{{ texto | slice:2 }}</p>
+<p>{{ texto | slice:2:4 }}</p>
+
+<hr>
+
+<p>{{ numero | currency:'EUR' }}</p>
+<p>{{ numero | number:'1.1-4' }}</p>
+
+<hr>
+
+<p>{{ fecha | date}}</p>
+<p>{{ fecha | date:'dd/MM/yy'  }}</p>
+
+<hr>
+
+<p>{{numero | doble }}</p>
+
+<hr>
+
+<p>{{texto | reverse }}</p>
+<p>{{lema | ocultar }}</p>
+
+<h1>Pipe NOSEQUE</h1>
+<input type="text" #input>
+<button type="button" (click)="addMascota(input.value)">Añadir</button>
+<ul>
+  <li *ngFor="let mascota of mascotas">
+
+    {{ mascota }}
+  
+  </li>
+</ul>
+
+<ul>
+    <li *ngFor="let mascota of mascotas | filtro:'r'">
+  
+      {{ mascota }}
+    
+    </li>
+  </ul>
+
+  <h1>Pipe Async</h1>
+  <p>Mensaje: {{ mensaje | async }}</p>
+
+
+
+

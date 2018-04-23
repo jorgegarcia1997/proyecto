@@ -7,14 +7,15 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 
 export class CmpDataBindingComponent implements OnInit {
-
   @Input() nombre: string;
+  @Input() apellido: string;
   escribir: boolean;
- @Output() miEvento;
+ @Output('unEvento') miEvento;
   
   constructor() { 
     this.miEvento = new EventEmitter<string>();
     this.nombre = "Jorge";
+    this.apellido = "Garcia"
     this.escribir = true;
   }
 
@@ -24,6 +25,16 @@ export class CmpDataBindingComponent implements OnInit {
   habilitarEdicion(){
     this.escribir = !this.escribir;
     this.miEvento.emit(`Se ha ${this.escribir ? 'deshabilitado' : 'habilitado'} la edicion.`);
+  }
+
+  nombreCompleto(){
+    return this.nombre + ' ' + this.apellido;
+  }
+
+  cambiarNombreCompleto(nombreCompleto){
+    let nombreYApellido = nombreCompleto.split(" ");
+    this.nombre = nombreYApellido.shift();
+    this.apellido = nombreYApellido.join(' ');
   }
 
 
